@@ -11,12 +11,7 @@
     "workspaceFolder": "/workspace",
     "postCreateCommand": "tlmgr update --self && tlmgr install acronym pgf && texhash",
     "extensions": [
-        "james-yu.latex-workshop",
-        "eamodio.gitlens",
-        "shardulm94.trailing-spaces",
-        "stkb.rewrap",
-        "vscode-icons-team.vscode-icons",
-        "znck.grammarly"
+        "james-yu.latex-workshop"
     ],
     "settings": {
         // General settings
@@ -28,29 +23,6 @@
         "files.associations": {
             "*.tex": "latex"
         },
-        "grammarly.overrides": [
-            {
-                "files": [
-                    "**/src/main.tex"
-                ],
-                "config": {
-                    "audience": "expert",
-                    "dialect": "american",
-                    "domain": "academic",
-                    "emotions": [
-                        "neutral",
-                        "confident",
-                        "respectful",
-                        "analytical"
-                    ],
-                    "goals": [
-                        "inform",
-                        "describe",
-                        "convince"
-                    ]
-                }
-            }
-        ],
         "latex-workshop.latex.recipes": [
             {
                 "name": "xelatex 🔃",
