@@ -1,0 +1,147 @@
+{
+    "name": "project-dev",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    "service": "vscode",
+    "runServices": [
+        "vscode"
+    ],
+    "shutdownAction": "stopCompose",
+    "workspaceFolder": "/workspace",
+    "postCreateCommand": "tlmgr update --self && tlmgr install acronym pgf && texhash",
+    "extensions": [
+        "james-yu.latex-workshop",
+        "eamodio.gitlens",
+        "shardulm94.trailing-spaces",
+        "stkb.rewrap",
+        "vscode-icons-team.vscode-icons",
+        "znck.grammarly"
+    ],
+    "settings": {
+        // General settings
+        "files.eol": "\n",
+        // Latex settings
+        "latex-workshop.latex.clean.subfolder.enabled": true,
+        "latex-workshop.latex.autoClean.run": "onBuilt",
+        "editor.formatOnSave": true,
+        "files.associations": {
+            "*.tex": "latex"
+        },
+        "grammarly.overrides": [
+            {
+                "files": [
+                    "**/src/main.tex"
+                ],
+                "config": {
+                    "audience": "expert",
+                    "dialect": "american",
+                    "domain": "academic",
+                    "emotions": [
+                        "neutral",
+                        "confident",
+                        "respectful",
+                        "analytical"
+                    ],
+                    "goals": [
+                        "inform",
+                        "describe",
+                        "convince"
+                    ]
+                }
+            }
+        ],
+        "latex-workshop.latex.recipes": [
+            {
+                "name": "xelatex 🔃",
+                "tools": [
+                    "xelatex",
+                    "bibtex",
+                    "xelatex",
+                    "xelatex"
+                ]
+            },
+            {
+                "name": "latexmk 🔃",
+                "tools": [
+                    "latexmk"
+                ]
+            },
+            {
+                "name": "latexmk (latexmkrc)",
+                "tools": [
+                    "latexmk_rconly"
+                ]
+            },
+            {
+                "name": "latexmk (lualatex)",
+                "tools": [
+                    "lualatexmk"
+                ]
+            },
+            {
+                "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+                "tools": [
+                    "pdflatex",
+                    "bibtex",
+                    "pdflatex",
+                    "pdflatex"
+                ]
+            },
+            {
+                "name": "Compile Rnw files",
+                "tools": [
+                    "rnw2tex",
+                    "latexmk"
+                ]
+            }
+        ],
+        "latex-workshop.latex.tools": [
+            {
+                "name": "latexmk",
+                "command": "latexmk",
+                "args": [
+                    "-xelatex",
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "-outdir=%OUTDIR%",
+                    "%DOC%"
+                ],
+                "env": {}
+            },
+            {
+                "name": "pdflatex",
+                "command": "pdflatex",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "%DOC%"
+                ],
+                "env": {}
+            },
+            {
+                "name": "bibtex",
+                "command": "bibtex",
+                "args": [
+                    "%DOCFILE%"
+                ],
+                "env": {}
+            },
+            {
+                "name": "xelatex",
+                "command": "xelatex",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "%DOCFILE%"
+                ]
+            }
+        ],
+        "[bibtex]": {
+            "editor.formatOnSave": false,
+        },
+    }
+}
